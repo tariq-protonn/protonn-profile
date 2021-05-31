@@ -1,0 +1,30 @@
+@import "styles/baseColors";
+
+.loginInfo {
+  display: flex;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 5px;
+  color: $white;
+  div {
+    text-align: right;
+  }
+}
+
+.picture {
+  padding: 5px;
+  img {
+    border-radius: 50%;
+    border: 2px solid $white;
+  }
+}
+
+.logout {
+  text-decoration: underline;
+  font-weight: bold;
+  cursor: pointer;
+}

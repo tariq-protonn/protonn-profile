@@ -1,0 +1,64 @@
+@import "styles/baseColors";
+
+.infoForm {
+  width: 1140px;
+  display: flex;
+  flex-direction: column;
+  margin: 15px;
+}
+
+.email {
+  width: 540px;
+  span {
+    font-weight: bold;
+  }
+  img {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+  }
+  div {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    a {
+      color: $blue-main;
+    }
+  }
+}
+
+.changeAccount {
+  color: $blue-main;
+}
+
+.main {
+  display: flex;
+}
+
+.label {
+  display: block;
+  font-size: 14px;
+  color: $black;
+  margin: 10px 0;
+}
+
+.colRight div {
+  margin-left: 15px;
+}
+
+.colLeft {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.colLeft div {
+  margin-right: 15px;
+}
+
+.toggler {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 31px;
+}

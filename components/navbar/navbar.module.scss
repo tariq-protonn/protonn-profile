@@ -1,0 +1,40 @@
+@import "styles/baseColors";
+
+.navbar {
+  color: $white;
+  height: 55px;
+  margin: 15px;
+  margin-bottom: 40px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.routingLinks {
+  display: flex;
+  align-items: center;
+}
+
+.navLink {
+  height: 35px;
+  padding: 0px 15px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.authenticationLinks {
+  display: flex;
+}
+
+.signIn {
+  padding: 20px;
+  border: 1px solid $white;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.selected {
+  border-bottom: 3px solid $white;
+}

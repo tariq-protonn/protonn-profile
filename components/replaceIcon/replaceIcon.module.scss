@@ -1,0 +1,11 @@
+@import "styles/baseColors";
+
+.replaceIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  background-color: rgba($color: $white, $alpha: 0.8);
+  border-radius: 50%;
+  border: 2px solid black;
+}

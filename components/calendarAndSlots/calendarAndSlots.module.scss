@@ -1,0 +1,13 @@
+@import "styles/baseColors";
+.calSlots {
+  width: 1140px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin: 15px;
+}
+
+.date {
+  color: $blue-dark;
+  margin-bottom: 15px;
+  padding: 15px;
+}

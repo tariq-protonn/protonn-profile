@@ -1,0 +1,31 @@
+@import "styles/baseColors";
+
+.service {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  padding: 0 150px;
+}
+
+.header {
+  height: 150px;
+  display: flex;
+  color: $white;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+.buttons {
+  margin-bottom: 10px;
+  button {
+    width: 545px;
+  }
+}

@@ -1,0 +1,41 @@
+@import "styles/baseColors";
+
+.sideCard {
+  display: flex;
+  height: 214px;
+  width: 255px;
+  padding: 40px;
+  margin: 15px;
+  border-radius: 16px;
+  transition: all 0.3s ease-in-out;
+  border: 1px solid rgba($grey-blue, 0.1);
+  box-shadow: 0px 0px 26px rgba(11, 48, 225, 0.15);
+  cursor: pointer;
+}
+
+.sideCard:hover {
+  border: 1px solid white;
+  box-shadow: 0 5px 20px rgba($blue-main, 0.4);
+}
+
+.sideCardContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.sideCardTitle {
+  color: $blue-main;
+  font-size: 20px;
+}
+
+.sideCardBody {
+  color: $grey-dark;
+  font-size: 14px;
+}
+
+.sideCardNext {
+  display: flex;
+  align-items: center;
+  margin-left: 15px;
+}

@@ -1,0 +1,13 @@
+@import "styles/baseColors";
+.videos {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.videoSection {
+  display: grid;
+  grid-template-columns: auto auto;
+}

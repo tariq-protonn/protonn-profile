@@ -1,0 +1,43 @@
+@import "styles/baseColors";
+
+.videoCard {
+  width: 170px;
+  height: 326px;
+  margin: 15px;
+}
+
+.videoCard:hover {
+  cursor: pointer;
+}
+
+.videoOverlay {
+  position: absolute;
+  z-index: 0;
+  color: $white;
+  width: 170px;
+  height: 326px;
+  padding: 20px;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-size: cover;
+  background: linear-gradient(180deg, rgba(1, 1, 1, 0) 61.91%, #323232 100%);
+}
+
+.videoCardTitle {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.thumbnail {
+  width: 170px;
+  height: 326px;
+  z-index: -1;
+  border-radius: 16px;
+}
+
+.playButton {
+  width: fit-content;
+  margin: 5px;
+}

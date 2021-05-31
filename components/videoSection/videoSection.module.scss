@@ -1,0 +1,18 @@
+.videoSection {
+  width: 780px;
+}
+
+.allVideos {
+  display: flex;
+  justify-content: space-between;
+}
+
+.videos {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+}
+
+.button {
+  width: 765px;
+}

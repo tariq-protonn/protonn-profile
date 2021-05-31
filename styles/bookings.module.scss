@@ -1,0 +1,10 @@
+@import "styles/baseColors";
+
+.bookings {
+  margin: 15px 0;
+}
+.upcoming,
+.completed {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}

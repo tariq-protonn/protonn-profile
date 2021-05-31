@@ -1,0 +1,25 @@
+@import "styles/baseColors";
+
+.btnPrimary {
+  width: 350px;
+  height: 50px;
+  color: $blue-main;
+  background-color: $white;
+  border: 1px solid $blue-main;
+  border-radius: 100px;
+  outline: none;
+  margin: 15px;
+  cursor: pointer;
+}
+
+.btnSecondary {
+  width: 540px;
+  height: 50px;
+  color: $white;
+  background-color: $blue-main;
+  border: none;
+  border-radius: 100px;
+  outline: none;
+  margin: 15px;
+  cursor: pointer;
+}

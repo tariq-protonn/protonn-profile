@@ -1,0 +1,66 @@
+@import "styles/baseColors";
+
+.link {
+  height: 244px;
+  width: 360px;
+  cursor: pointer;
+}
+
+.long {
+  width: 1140px;
+  height: 157px;
+}
+
+.serviceCard {
+  display: flex;
+  padding: 30px;
+  box-shadow: 0px 0px 26px rgba(50, 50, 50, 0.1);
+  border: 1px solid $center-border;
+  border-radius: 16px;
+  margin: 15px;
+  transition: all 0.4s ease-in-out;
+}
+
+.serviceCard:hover {
+  border: 1px solid white;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+}
+
+.serviceContent {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.serviceTitle {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.serviceDetail,
+.duration {
+  font-size: 14px;
+  color: $grey-dark;
+}
+
+.duration {
+  font-weight: bold;
+}
+
+.serviceInfo {
+  display: flex;
+  justify-content: space-between;
+}
+
+.cost {
+  font-size: 18px;
+  color: $blue-main;
+  font-weight: bold;
+}
+
+.serviceNext {
+  width: 20px;
+  display: flex;
+  align-items: center;
+}

@@ -1,0 +1,52 @@
+@import "styles/baseColors";
+
+.videoCardLarge {
+  height: 683px;
+  height: max-content;
+  width: 360px;
+  margin: 15px;
+}
+
+.videoOverlay {
+  pointer-events: none;
+  position: absolute;
+  width: 360px;
+  height: 683px;
+  padding: 30px;
+  border-radius: 16px;
+  z-index: 1;
+  color: $white;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  background: linear-gradient(180deg, rgba(1, 1, 1, 0) 61.91%, #323232 100%);
+}
+
+.videoPlayer {
+  height: 683px;
+  width: 360px;
+  div {
+    border-radius: 16px;
+    video {
+      padding: 0;
+      margin: 0;
+      object-fit: cover;
+      border-radius: 16px;
+    }
+  }
+}
+
+.videoCardLargeName {
+  margin-bottom: 15px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.videoCardLargeInfo {
+  display: flex;
+  font-size: 11px;
+}
+
+.videoCardLargeDescription {
+  font-size: 14px;
+}
