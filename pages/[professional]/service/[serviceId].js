@@ -8,12 +8,13 @@ import CalendarAndSlots from '../../../components/calendarAndSlots/calendarAndSl
 import LoginInfo from '../../../components/loginInfo/loginInfo';
 import Footer from '../../../components/footer/footer';
 import fetchProfileData from '../../../utils/fetchProfileData';
-import { useAuth } from '../../../authentication/auth';
 import styles from '../../../styles/service.module.scss';
 import globalStyles from '../../../styles/globals.module.scss';
+import nookies from 'nookies';
+import parseCredentials from '../../../utils/parseCredentials';
 
-const Booking = ({ data }) => {
-    const user = useAuth().user;
+const Booking = ({ data, credentials }) => {
+    const userCredentials = parseCredentials(credentials);
     const router = useRouter();
     const { serviceId } = router.query;
     const [serviceData] = data.serviceInfo.filter(service => service.serviceId === serviceId);
@@ -30,9 +31,9 @@ const Booking = ({ data }) => {
             <div className={globalStyles.container}>
                 <header className={styles.header}>
                     <h2>{name}</h2>
-                    {user && <LoginInfo data={{
-                        name: user.displayName,
-                        pictureUrl: user.photoURL,
+                    {userCredentials.user && <LoginInfo data={{
+                        name: userCredentials.user.displayName,
+                        pictureUrl: userCredentials.user.photoURL,
                         customUrl: data.customInfo.customUrl
                     }} />}
                 </header>
@@ -52,13 +53,18 @@ const Booking = ({ data }) => {
     )
 }
 
-export async function getServerSideProps({ params }) {
-    const data = await fetchProfileData(params.professional);
+export async function getServerSideProps(context) {
+    const allCookies = await nookies.get(context);
+    const credentials = {
+        token: allCookies.token ? allCookies.token : null,
+        user: allCookies.user ? allCookies.user : null
+    }
+    const data = await fetchProfileData(context.params.professional);
 
     if (!data)
         return { notFound: true }
 
-    return { props: { data } }
+    return { props: { data, credentials } }
 }
 
 export default Booking;

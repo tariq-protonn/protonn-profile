@@ -8,12 +8,13 @@ import Login from '../../components/login/login';
 import VideoSection from '../../components/videoSection/videoSection';
 import ServiceSection from '../../components/serviceSection/serviceSection';
 import fetchProfileData from '../../utils/fetchProfileData';
-import { useAuth } from '../../authentication/auth';
 import globalStyles from '../../styles/globals.module.scss';
 import styles from '../../styles/home.module.scss';
+import nookies from 'nookies';
+import parseCredentials from '../../utils/parseCredentials';
 
-const Home = ({ data }) => {
-	const user = useAuth();
+const Home = ({ data, credentials }) => {
+	const userCredentials = parseCredentials(credentials);
 	const customUrl = data.customInfo.customUrl;
 	const profileInfo = {
 		firstName: data.firstName,
@@ -35,7 +36,6 @@ const Home = ({ data }) => {
 		}
 		return freeService;
 	}
-
 	const freeService = getFreeService(data.serviceInfo);
 
 	return (<div className={styles.home}>
@@ -52,6 +52,7 @@ const Home = ({ data }) => {
 						<ProfileCard profileInfo={profileInfo} />
 						{freeService.available &&
 							<SideCard
+								user={userCredentials.user}
 								serviceId={freeService.serviceId}
 								customUrl={customUrl} />}
 					</div>
@@ -59,7 +60,7 @@ const Home = ({ data }) => {
 				<div className={globalStyles.main}>
 					<Navbar
 						active='Home'
-						user={user.user}
+						user={userCredentials.user}
 						onLogin={() => setShowLoginModal(true)}
 						customUrl={customUrl} />
 					<div className={globalStyles.mainContent} >
@@ -67,6 +68,7 @@ const Home = ({ data }) => {
 							videoInfo={data.videoInfo}
 							customUrl={customUrl} />
 						<ServiceSection
+							user={userCredentials.user}
 							serviceInfo={data.serviceInfo}
 							customUrl={customUrl} />
 					</div>
@@ -77,27 +79,19 @@ const Home = ({ data }) => {
 	</div>)
 }
 
-export async function getStaticPaths() {
-	return {
-		paths: [
-			{ params: { professional: 'anil-goteti' } },
-			{ params: { professional: 'shashank-juyal' } },
-			{ params: { professional: 'ashish-ranka' } },
-			{ params: { professional: 'lindsay' } },
-			{ params: { professional: 'prashant' } },
-			{ params: { professional: 'charles-lam' } },
-		],
-		fallback: false,
+export async function getServerSideProps(context) {
+	const allCookies = await nookies.get(context);
+	const credentials = {
+		token: allCookies.token ? allCookies.token : null,
+		user: allCookies.user ? allCookies.user : null
 	}
-}
 
-export async function getStaticProps({ params }) {
-	const data = await fetchProfileData(params.professional);
+	const data = await fetchProfileData(context.params.professional);
 
 	if (!data)
 		return { notFound: true }
 
-	return { props: { data } }
+	return { props: { data, credentials } }
 }
 
 export default Home;

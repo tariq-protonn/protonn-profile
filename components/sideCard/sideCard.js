@@ -4,8 +4,7 @@ import { useAuth } from '../../authentication/auth';
 import { useRouter } from 'next/router';
 
 import styles from './sideCard.module.scss';
-const SideCard = ({ className, serviceId, customUrl }) => {
-    const user = useAuth().user;
+const SideCard = ({ className, serviceId, customUrl, user }) => {
     const router = useRouter();
     const [showLoginModal, setShowLoginModal] = useState(false);
     const handleClick = (serviceId) => {

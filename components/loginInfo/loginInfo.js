@@ -9,9 +9,9 @@ const LoginInfo = ({ data }) => {
     const logOut = () => {
         firebaseClient();
         firebase.auth().signOut().then((result) => {
-
+            document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+            document.cookie = "user=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
             router.push(`/${customUrl}`)
-
         }).catch((error) => {
 
         });

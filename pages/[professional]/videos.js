@@ -7,12 +7,13 @@ import VideoPlayer from '../../components/videoPlayer/videoPlayer';
 import Footer from '../../components/footer/footer';
 import Login from '../../components/login/login'
 import fetchProfileData from '../../utils/fetchProfileData';
-import { useAuth } from '../../authentication/auth';
 import styles from '../../styles/videos.module.scss'
 import globalStyles from '../../styles/globals.module.scss';
+import nookies from 'nookies';
+import parseCredentials from '../../utils/parseCredentials';
 
-const Videos = ({ data }) => {
-    const user = useAuth();
+const Videos = ({ data, credentials }) => {
+    const userCredentials = parseCredentials(credentials);
     const customUrl = data.customInfo.customUrl;
     const profileInfo = {
         firstName: data.firstName,
@@ -50,6 +51,7 @@ const Videos = ({ data }) => {
                         <ProfileCard profileInfo={profileInfo} />
                         {freeService.available &&
                             <SideCard
+                                user={userCredentials.user}
                                 serviceId={freeService.serviceId}
                                 customUrl={customUrl} />}
                     </div>
@@ -57,7 +59,7 @@ const Videos = ({ data }) => {
                 <div className={globalStyles.main}>
                     <Navbar
                         active='Videos'
-                        user={user.user}
+                        user={userCredentials.user}
                         onLogin={() => setLogin(true)}
                         customUrl={customUrl} />
                     <div className={globalStyles.mainContent}>
@@ -77,13 +79,18 @@ const Videos = ({ data }) => {
 }
 
 
-export async function getServerSideProps({ params }) {
-    const data = await fetchProfileData(params.professional);
+export async function getServerSideProps(context) {
+    const allCookies = await nookies.get(context);
+    const credentials = {
+        token: allCookies.token ? allCookies.token : null,
+        user: allCookies.user ? allCookies.user : null
+    }
+    const data = await fetchProfileData(context.params.professional);
 
     if (!data)
         return { notFound: true }
 
-    return { props: { data } }
+    return { props: { data, credentials } }
 }
 
 export default Videos;

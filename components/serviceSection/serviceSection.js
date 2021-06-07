@@ -6,8 +6,7 @@ import Login from '../login/login';
 import { useAuth } from '../../authentication/auth';
 import { useRouter } from 'next/router';
 
-const ServiceSection = ({ serviceInfo, customUrl }) => {
-    const user = useAuth().user;
+const ServiceSection = ({ serviceInfo, customUrl, user }) => {
     const router = useRouter();
     const [showLoginModal, setShowLoginModal] = useState(false);
     const handleClick = (serviceId) => {

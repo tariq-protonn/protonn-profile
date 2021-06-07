@@ -3,15 +3,20 @@ import Button from '../button/button'
 import firebaseClient from '../../authentication/firebaseClient'
 import firebase from 'firebase'
 import styles from './login.module.scss'
-
+import { useRouter } from 'next/router';
+import nookies from 'nookies';
 const Login = ({ onCancel }) => {
+    const router = useRouter();
     firebaseClient();
     const handleFormSubmit = () => {
         var provider = new firebase.auth.GoogleAuthProvider();
         firebase.auth()
             .signInWithPopup(provider)
             .then((result) => {
+                nookies.set(undefined, 'token', result.credential.idToken, {})
+                nookies.set(undefined, 'user', JSON.stringify(result.user), {})
                 onCancel();
+                router.reload();
             }).catch((error) => {
                 console.log(error)
             });
